@@ -1,11 +1,13 @@
-import React from 'react';
+import { Stack } from "@mui/material";
+import React from "react";
+import Banner from "./Banner";
 
 const Home = () => {
-    return (
-        <div>
-            <h3>home page</h3>
-        </div>
-    );
+  return (
+    <Stack spacing={3}>
+      <Banner />
+    </Stack>
+  );
 };
 
 export default Home;
