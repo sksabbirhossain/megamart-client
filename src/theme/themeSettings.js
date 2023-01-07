@@ -4,6 +4,7 @@ const color = {
   heading: "222222",
   border: "#EDEDED",
   background: "#F3F9FB",
+  bg: "#00aeff0c",
 };
 
 export const themeSettings = (mode) => ({
@@ -18,6 +19,7 @@ export const themeSettings = (mode) => ({
             heading: color.heading,
             border: color.border,
             background: color.background,
+            bg: color.bg,
           },
           background: {
             default: color.background,
