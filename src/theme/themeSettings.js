@@ -1,3 +1,5 @@
+import { hover } from "@testing-library/user-event/dist/hover";
+
 const color = {
   primary: "#008ECC",
   text: "#666666",
@@ -42,6 +44,19 @@ export const themeSettings = (mode) => ({
 
   components: {
     MuiButton: {
+      styleOverrides: {
+        root: {
+          border: "1px solid",
+          borderColor: color.primary,
+          "&:hover": {
+            background: "none",
+            color: "#000",
+            border: "1px solid",
+            boxShadow: "none",
+            borderColor: color.primary,
+          },
+        },
+      },
       defaultProps: {
         disableRipple: true,
         variant: "contained",
