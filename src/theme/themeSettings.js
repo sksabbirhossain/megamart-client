@@ -1,7 +1,5 @@
-
-
 const color = {
-  primary: "#BBACFA",
+  primary: "#f57224",
   text: "#666666",
   heading: "222222",
   border: "#EDEDED",
@@ -48,6 +46,8 @@ export const themeSettings = (mode) => ({
         root: {
           border: "1px solid",
           borderColor: color.primary,
+          background: "#7693a5",
+          color: "white",
           "&:hover": {
             background: "none",
             color: "#000",

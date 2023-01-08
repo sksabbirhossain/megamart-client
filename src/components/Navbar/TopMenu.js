@@ -10,7 +10,8 @@ const TopMenu = () => {
     <Box
       sx={{
         width: "100%",
-        background: "#EDEDED",
+        background: "#4f7c93",
+        color: "#ece5e5"
       }}
     >
       <Container>

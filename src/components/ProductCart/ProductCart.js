@@ -38,6 +38,9 @@ const ProductCart = () => {
           <Typography gutterBottom variant="h6">
             Galaxy s22 Ultra
           </Typography>
+          <Typography gutterBottom variant="body2">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit...
+          </Typography>
           <Box display="flex" justifyContent="space-between">
             <Typography variant="body2" fontWeight="bold">
               $32999
