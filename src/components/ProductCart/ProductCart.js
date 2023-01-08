@@ -16,7 +16,18 @@ const ProductCart = () => {
   const [value, setValue] = React.useState(2);
   return (
     <Grid item xs={12} sm={4} md={3} lg={2.4}>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card
+        sx={{
+          maxWidth: 345,
+          border: "1px solid",
+          borderColor: "#bcdcdc",
+          boxShadow: "none",
+          "&:hover": {
+              borderColor: "#008ECC",
+              boxShadow: "0px 0px 4px"
+          },
+        }}
+      >
         <CardMedia
           component="img"
           alt="green iguana"

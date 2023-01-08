@@ -7,4 +7,5 @@ export const MainNavbar = styled(Box)(({ theme }) => ({
   height: "60px",
   border: "1px solid",
   borderColor: theme.palette.primary.border,
+  background: theme.palette.primary.background,
 }));
