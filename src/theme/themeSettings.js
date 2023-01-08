@@ -1,7 +1,7 @@
-import { hover } from "@testing-library/user-event/dist/hover";
+
 
 const color = {
-  primary: "#008ECC",
+  primary: "#BBACFA",
   text: "#666666",
   heading: "222222",
   border: "#EDEDED",

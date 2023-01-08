@@ -8,13 +8,13 @@ const HeadingContainer = ({title, url}) => {
   return (
     <Box>
       <Container>
-        <HeadingBox>
+        <HeadingBox >
           <Typography variant="body" component="h3">
             {title}
           </Typography>
           <NavLink to={url}>
             <Box display="flex" alignItems="center">
-              View all
+              <span>View More</span>
               <ArrowForwardIosOutlinedIcon fontSize="" color="primary" />
             </Box>
           </NavLink>
