@@ -1,11 +1,12 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 
-const HomePageCategory = () => {
+const HomePageCategory = ({ category }) => {
+  console.log(category);
   return (
     <Box
       sx={{
-        maxWidth: "120px",
+        maxWidth: "130px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -34,7 +35,7 @@ const HomePageCategory = () => {
         />
       </Box>
       <Box>
-        <Typography variant="body">Mobile</Typography>
+        <Typography variant="body">{category }</Typography>
       </Box>
     </Box>
   );
