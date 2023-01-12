@@ -13,7 +13,7 @@ import {
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ProductCart = ({ product, loading }) => {
+const ProductCart = ({ product }) => {
   return (
     <Grid item xs={12} sm={4} md={3} lg={2.4}>
       <Link to={`/product-details/${product.id}`}>
