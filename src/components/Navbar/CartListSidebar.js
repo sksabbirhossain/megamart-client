@@ -1,11 +1,13 @@
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Box, Button, SwipeableDrawer, Typography } from "@mui/material";
 import React from "react";
 import { useCart } from "../../contexts/CartContext";
 
 const CartListSidebar = ({ open, setOpen }) => {
-  const { cart, removeCart } = useCart();
-  console.log(cart);
+  const { cart, removeCart, increaseQty, decreaseQty } = useCart();
+
   return (
     <SwipeableDrawer anchor="right" open={open} onClose={() => setOpen(false)}>
       <Box
@@ -43,9 +45,23 @@ const CartListSidebar = ({ open, setOpen }) => {
               boxShadow={3}
               borderRadius="5px"
               py={1}
-              px="10px"
+              px={1}
               mb={1}
             >
+              <Box
+                display="flex"
+                flexDirection="column"
+                alignItems="center"
+                mr={1}
+              >
+                <span onClick={() => decreaseQty(item)}>
+                  <ArrowDropUpIcon />
+                </span>
+                {item.quantity}
+                <span onClick={() => increaseQty(item)}>
+                  <ArrowDropDownIcon />
+                </span>
+              </Box>
               <img
                 src={item.image}
                 alt=""

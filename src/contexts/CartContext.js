@@ -32,10 +32,27 @@ export function CartProvider({ children }) {
     setCart(newCart);
   };
 
+  const increaseQty = (product) => {
+    if (product.quantity >= 1) {
+      product.quantity++;
+      const updateQty = [...cart];
+      setCart(updateQty);
+    }
+  };
+  const decreaseQty = (product) => {
+    if (product.quantity > 1) {
+      product.quantity--;
+      const updateQty = [...cart];
+      setCart(updateQty);
+    }
+  };
+
   const value = {
     addToCart,
     cart,
     removeCart,
+    increaseQty,
+    decreaseQty,
   };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
