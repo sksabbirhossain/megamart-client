@@ -2,7 +2,6 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 
 const HomePageCategory = ({ category }) => {
-  console.log(category);
   return (
     <Box
       sx={{

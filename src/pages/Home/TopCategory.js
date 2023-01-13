@@ -9,7 +9,7 @@ const TopCategory = () => {
   //fetch products
   useEffect(() => {
     setLoading(true);
-    fetch('https://fakestoreapi.com/products/categories')
+    fetch("https://fakestoreapi.com/products/categories")
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);
@@ -25,7 +25,6 @@ const TopCategory = () => {
           <Box
             sx={{
               display: "flex",
-              // justifyContent: "center",
               alignItems: "center",
               flexWrap: "wrap",
               gap: "20px",
@@ -33,8 +32,8 @@ const TopCategory = () => {
           >
             {loading
               ? "loading..."
-              : categories?.map((category) => (
-                  <HomePageCategory category={category} key={category.id} />
+              : categories?.map((category, i) => (
+                  <HomePageCategory category={category} key={i} />
                 ))}
           </Box>
         </Container>
