@@ -18,13 +18,18 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { useCart } from "../../contexts/CartContext";
 import { FlexBox } from "../../styles/common/Flexbox";
 import { MainNavbar } from "../../styles/MainMenu/MainNavbar";
 import { SearchInput } from "../../styles/MainMenu/SearchInput";
+import CartListSidebar from "./CartListSidebar";
 
 const MainMenu = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [openCart, setOpenCart] = useState(false);
+
+  const { cart } = useCart();
   return (
     <MainNavbar>
       <Container>
@@ -41,7 +46,17 @@ const MainMenu = () => {
                 <MenuIcon color="primary" />
               </IconButton>
             </Box>
-            MegaMart
+            <Link to="/">
+              <Typography
+                variant="h5"
+                fontWeight="bold"
+                color="primary"
+                display="flex"
+                alignItems="center"
+              >
+                MegaMart
+              </Typography>
+            </Link>
           </Typography>
           <Stack
             direction="row"
@@ -60,20 +75,27 @@ const MainMenu = () => {
               <ListOutlinedIcon color="primary" />
             </SearchInput>
             <Box display={{ xs: "flex", md: "none" }}>
-                <IconButton>
-                  <SearchOutlinedIcon color="primary" />
-                </IconButton>
-              </Box>
+              <IconButton>
+                <SearchOutlinedIcon color="primary" />
+              </IconButton>
+            </Box>
             <NavLink to="/f">
               <Box display="flex">
                 <Person2OutlinedIcon color="primary" /> SignUp/SignIn
               </Box>
             </NavLink>
-            <NavLink to="/f">
-              <Box display="flex">
-                <ShoppingCartOutlinedIcon color="primary" /> Cart
-              </Box>
-            </NavLink>
+            <Box
+              display="flex"
+              sx={{ cursor: "pointer" }}
+              onClick={() => setOpenCart(true)}
+            >
+              <Badge
+                color="secondary"
+                badgeContent={cart.length === 0 ? "0" : cart.length}
+              >
+                Cart <ShoppingCartOutlinedIcon color="primary" />
+              </Badge>
+            </Box>
           </Stack>
           <Stack
             direction="row"
@@ -88,13 +110,18 @@ const MainMenu = () => {
                 </IconButton>
               </Box>
             </NavLink>
-            <NavLink to="/">
-              <Box display="flex">
-                <Badge color="secondary" badgeContent={10}>
-                  <ShoppingCartOutlinedIcon color="primary" />
-                </Badge>
-              </Box>
-            </NavLink>
+            <Box
+              display="flex"
+              sx={{ cursor: "pointer" }}
+              onClick={() => setOpenCart(true)}
+            >
+              <Badge
+                color="secondary"
+                badgeContent={cart.length === 0 ? "0" : cart.length}
+              >
+                <ShoppingCartOutlinedIcon color="primary" />
+              </Badge>
+            </Box>
           </Stack>
         </FlexBox>
       </Container>
@@ -115,6 +142,9 @@ const MainMenu = () => {
           </List>
         </Box>
       </SwipeableDrawer>
+
+      {/* cart items list */}
+      <CartListSidebar open={openCart} setOpen={setOpenCart} />
     </MainNavbar>
   );
 };

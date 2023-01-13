@@ -12,25 +12,27 @@ import {
 } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
+import { useCart } from "../../contexts/CartContext";
 
 const ProductCart = ({ product }) => {
+  const {addToCart} = useCart()
   return (
     <Grid item xs={12} sm={4} md={3} lg={2.4}>
-      <Link to={`/product-details/${product.id}`}>
-        <Card
-          sx={{
-            maxWidth: 345,
-            height: 345,
-            border: "1px solid",
-            borderColor: "#bcdcdc",
-            boxShadow: "none",
-            position: "relative",
-            "&:hover": {
-              borderColor: "#008ECC",
-              boxShadow: "0px 0px 4px",
-            },
-          }}
-        >
+      <Card
+        sx={{
+          maxWidth: 345,
+          height: 345,
+          border: "1px solid",
+          borderColor: "#bcdcdc",
+          boxShadow: "none",
+          position: "relative",
+          "&:hover": {
+            borderColor: "#008ECC",
+            boxShadow: "0px 0px 4px",
+          },
+        }}
+      >
+        <Link to={`/product-details/${product.id}`}>
           <CardMedia
             component="img"
             alt="green iguana"
@@ -66,19 +68,13 @@ const ProductCart = ({ product }) => {
               </Typography>
             </Box>
           </CardContent>
-          <CardActions
-            sx={{ position: "absolute", bottom: "0", width: "100%" }}
-          >
-            <Button
-              size="small"
-              fullWidth
-              endIcon={<ShoppingCartOutlinedIcon />}
-            >
-              Add To Cart
-            </Button>
-          </CardActions>
-        </Card>
-      </Link>
+        </Link>
+        <CardActions sx={{ position: "absolute", bottom: "0", width: "100%" }}>
+          <Button size="small" fullWidth endIcon={<ShoppingCartOutlinedIcon />} onClick={()=>addToCart(product)}>
+            Add To Cart
+          </Button>
+        </CardActions>
+      </Card>
     </Grid>
   );
 };
