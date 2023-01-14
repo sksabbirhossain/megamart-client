@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 import Form from "../../components/Form/Form";
 import FormInput from "../../components/FormInput/FormInput";
 
@@ -57,6 +58,13 @@ const Signup = () => {
               </Box>
             </Form>
           </Box>
+          <Typography fontSize={15}>
+            You have allready an account?
+            <Link to="/Signin" style={{ color: "green" }}>
+              {" "}
+              login you account
+            </Link>
+          </Typography>
         </Paper>
       </Container>
     </Box>
