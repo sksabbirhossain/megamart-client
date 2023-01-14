@@ -7,11 +7,9 @@ import {
   Badge,
   Box,
   Container,
-  Drawer,
   IconButton,
   List,
   ListItemButton,
-  ListItemIcon,
   ListItemText,
   Stack,
   SwipeableDrawer,
@@ -79,7 +77,7 @@ const MainMenu = () => {
                 <SearchOutlinedIcon color="primary" />
               </IconButton>
             </Box>
-            <NavLink to="/f">
+            <NavLink to="/signin">
               <Box display="flex">
                 <Person2OutlinedIcon color="primary" /> SignUp/SignIn
               </Box>
@@ -136,8 +134,8 @@ const MainMenu = () => {
             <ListItemButton component={NavLink} to="/signup">
               <ListItemText secondary="SignUp" />
             </ListItemButton>
-            <ListItemButton>
-              <ListItemText secondary="Login" component={NavLink} to="/login" />
+            <ListItemButton component={NavLink} to="/signin">
+              <ListItemText secondary="Login" />
             </ListItemButton>
           </List>
         </Box>
