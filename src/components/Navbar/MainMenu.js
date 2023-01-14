@@ -82,6 +82,7 @@ const MainMenu = () => {
                 <Person2OutlinedIcon color="primary" /> SignUp/SignIn
               </Box>
             </NavLink>
+            <NavLink to="/order">Order</NavLink>
             <Box
               display="flex"
               sx={{ cursor: "pointer" }}
@@ -95,6 +96,8 @@ const MainMenu = () => {
               </Badge>
             </Box>
           </Stack>
+
+          {/* responsive menu */}
           <Stack
             direction="row"
             spacing={1}

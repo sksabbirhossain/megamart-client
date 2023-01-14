@@ -3,6 +3,7 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Box, Button, SwipeableDrawer, Typography } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 import { useCart } from "../../contexts/CartContext";
 
 const CartListSidebar = ({ open, setOpen }) => {
@@ -80,7 +81,9 @@ const CartListSidebar = ({ open, setOpen }) => {
           ))}
         </Box>
         <Box position="absolute" bottom="10px" width="90%" mt={4} mx={2}>
-          <Button fullWidth>Order</Button>
+          <Link to="/order">
+            <Button fullWidth>Order</Button>
+          </Link>
         </Box>
       </Box>
     </SwipeableDrawer>

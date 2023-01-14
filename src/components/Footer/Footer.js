@@ -3,7 +3,7 @@ import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FooterBox } from "../../styles/FooterBox/FooterBox";
 import { FooterLink } from "../../styles/FooterBox/FooterLink";
 import playStore from "../../images/playstore.png"
@@ -54,13 +54,13 @@ const Footer = () => {
               <Box>
                 <Box display="flex" gap={1} mt={1}>
                   <FooterLink>
-                    <NavLink>Groceries</NavLink>
-                    <NavLink>Premium Fruits</NavLink>
-                    <NavLink>Home & Kitchen</NavLink>
-                    <NavLink>Fashon</NavLink>
-                    <NavLink>Toys & Luggage</NavLink>
-                    <NavLink>Electronics</NavLink>
-                    <NavLink>Home Improvement</NavLink>
+                    <Link>Groceries</Link>
+                    <Link>Premium Fruits</Link>
+                    <Link>Home & Kitchen</Link>
+                    <Link>Fashon</Link>
+                    <Link>Toys & Luggage</Link>
+                    <Link>Electronics</Link>
+                    <Link>Home Improvement</Link>
                   </FooterLink>
                 </Box>
               </Box>
@@ -74,12 +74,12 @@ const Footer = () => {
               <Box>
                 <Box display="flex" gap={1} mt={1}>
                   <FooterLink>
-                    <NavLink>About Us</NavLink>
-                    <NavLink>Terms & Conditions</NavLink>
-                    <NavLink>FAQ</NavLink>
-                    <NavLink>Privacy Policy</NavLink>
-                    <NavLink>E-waste Policy</NavLink>
-                    <NavLink>Concellation & Return Policy</NavLink>
+                    <Link>About Us</Link>
+                    <Link>Terms & Conditions</Link>
+                    <Link>FAQ</Link>
+                    <Link>Privacy Policy</Link>
+                    <Link>E-waste Policy</Link>
+                    <Link>Concellation & Return Policy</Link>
                   </FooterLink>
                 </Box>
               </Box>

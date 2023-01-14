@@ -3,6 +3,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Main from "./layouts/Main";
 import Home from "./pages/Home/Home";
+import Order from "./pages/Order/Order";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import SignIn from "./pages/SignIn/SignIn";
 import Signup from "./pages/Signup/Signup";
@@ -21,6 +22,7 @@ function App() {
           <Route path="/product-details/:id" element={<ProductDetails />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<SignIn />} />
+          <Route path="/order" element={<Order />} />
         </Route>
       </Routes>
     </ThemeProvider>
