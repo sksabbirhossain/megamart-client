@@ -6,12 +6,49 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import Form from "../../components/Form/Form";
 import FormInput from "../../components/FormInput/FormInput";
 
 const Signup = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setconfirmPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleSignup = (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      return alert("not match");
+    }
+    //signup
+    fetch("http://localhost:5000/api/signup", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          navigate("/signin");
+          toast.success("Signup Successfull");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert(error.message);
+      });
+  };
+
   return (
     <Box mt={3}>
       <Container>
@@ -26,30 +63,42 @@ const Signup = () => {
           <Typography fontWeight={700}>Create Your Account</Typography>
           <Divider />
           <Box py={1}>
-            <Form>
+            <Form onSubmit={handleSignup}>
               <FormInput
                 label="User Name"
                 type="text"
-                name="username"
+                name="name"
                 placeholder="user name"
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
               <FormInput
                 label="User Email"
                 type="email"
                 name="email"
                 placeholder="user email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <FormInput
                 label="Password"
                 type="password"
                 name="password"
                 placeholder="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <FormInput
                 label="Confirm Password"
                 type="password"
                 name="cpassword"
                 placeholder="confirm password"
+                required
+                value={confirmPassword}
+                onChange={(e) => setconfirmPassword(e.target.value)}
               />
               <Box mt={2}>
                 <Button size="small" fullWidth type="submit">
@@ -60,7 +109,7 @@ const Signup = () => {
           </Box>
           <Typography fontSize={15}>
             You have allready an account?
-            <Link to="/Signin" style={{ color: "green" }}>
+            <Link to="/signin" style={{ color: "green" }}>
               {" "}
               login you account
             </Link>
