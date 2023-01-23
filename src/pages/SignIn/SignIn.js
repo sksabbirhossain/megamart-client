@@ -11,11 +11,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Form from "../../components/Form/Form";
 import FormInput from "../../components/FormInput/FormInput";
+import { useAuth } from "../../contexts/AuthContext";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { setCurrentUser } = useAuth();
 
   const handleSignin = (e) => {
     e.preventDefault();
@@ -33,8 +35,9 @@ const SignIn = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          console.log(data)
-          JSON.stringify(localStorage.setItem("token", `Authorization ${data.token}`))
+          console.log(data.data);
+          localStorage.setItem("token", JSON.stringify(`Bearer ${data.token}`));
+          setCurrentUser(data.data);
           navigate("/");
           toast.success("Login Successfull");
         }

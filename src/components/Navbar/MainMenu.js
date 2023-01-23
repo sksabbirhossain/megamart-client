@@ -16,7 +16,9 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useAuth } from "../../contexts/AuthContext";
 import { useCart } from "../../contexts/CartContext";
 import { FlexBox } from "../../styles/common/Flexbox";
 import { MainNavbar } from "../../styles/MainMenu/MainNavbar";
@@ -27,7 +29,17 @@ const MainMenu = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [openCart, setOpenCart] = useState(false);
 
+  const navigate = useNavigate();
+
   const { cart } = useCart();
+  const { currentUser, setCurrentUser } = useAuth();
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    toast.success("logout Successfull");
+    setCurrentUser(null);
+    return navigate("/");
+  };
   return (
     <MainNavbar>
       <Container>
@@ -77,11 +89,24 @@ const MainMenu = () => {
                 <SearchOutlinedIcon color="primary" />
               </IconButton>
             </Box>
-            <NavLink to="/signin">
-              <Box display="flex">
-                <Person2OutlinedIcon color="primary" /> SignUp/SignIn
-              </Box>
-            </NavLink>
+            {currentUser ? (
+              <>
+                <NavLink>
+                  <Box display="flex" onClick={logout}>
+                    LogOut
+                  </Box>
+                </NavLink>
+              </>
+            ) : (
+              <>
+                <NavLink to="/signin">
+                  <Box display="flex">
+                    <Person2OutlinedIcon color="primary" />
+                    SignUp/SignIn
+                  </Box>
+                </NavLink>
+              </>
+            )}
             <NavLink to="/order">Order</NavLink>
             <Box
               display="flex"
